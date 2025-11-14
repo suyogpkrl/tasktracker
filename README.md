@@ -104,4 +104,4 @@ MIT License - see LICENSE file for details.
 
 ## Author
 
-Suyog (pokhrels477@gmail.com)
+Suyog Pokhrel (pokhrels477@gmail.com)
