@@ -1,11 +1,26 @@
 # Main entry point for the Task Tracker CLI application
 
-import tasks
+from tasktracker import tasks
 import argparse
 
 # Initialize argument parser for the CLI
-parser = argparse.ArgumentParser(prog="tracker",description="Simple Task Tracker CLI")
-subparsers = parser.add_subparsers(dest="command")
+parser = argparse.ArgumentParser(
+    prog="tracker",
+    description="📝 Task Tracker - Manage your todo list from command line",
+    epilog="""
+Examples:
+  tracker add 'Buy groceries'     # Add a new task
+  tracker list                    # Show all tasks
+  tracker list pending            # Show only pending tasks
+  tracker list done               # Show only completed tasks
+  tracker done 1                  # Mark task 1 as completed
+  tracker remove 2                # Remove task 2
+
+Use 'tracker <command> --help' for more info on a specific command.
+""",
+    formatter_class=argparse.RawDescriptionHelpFormatter
+)
+subparsers = parser.add_subparsers(dest="command", title = "available commands")
 
 # Subcommand: add a new task
 add_parser = subparsers.add_parser("add", help="Add a new task")

@@ -1,30 +1,30 @@
 # Task management functions for adding, removing, listing, and updating tasks
 
-from storage import load_tasks, save_tasks
+from tasktracker import storage
 
 
 def add_task(task: str) -> None:
     """Add a new task to the task list."""
-    tasks = load_tasks()
+    tasks = storage.load_tasks()
     tasks.append({"description": task, "done": False})
-    save_tasks(tasks)
+    storage.save_tasks(tasks)
     print("Task added successfully")
 
 
 def remove_task(index: int) -> None:
     """Remove a task by its index (1-based indexing)."""
-    tasks = load_tasks()
+    tasks = storage.load_tasks()
     # Convert 1-based index to 0-based for list access
     if 0 <= index - 1 < len(tasks):
         removed = tasks.pop(index - 1)
-        save_tasks(tasks)
+        storage.save_tasks(tasks)
         print(f"Removed: {removed['description']}") 
     else:
         print("Invalid task number")
 
 def list_tasks(mode: str = 'all') -> None:
     """Display tasks filtered by status (all, pending, or done)."""
-    tasks = load_tasks()
+    tasks = storage.load_tasks()
 
     # Filter tasks based on completion status
     if mode == "pending":
@@ -45,7 +45,7 @@ def list_tasks(mode: str = 'all') -> None:
 
 def mark_done(index: int) -> None:
     """Mark a task as completed by its index (1-based indexing)."""
-    tasks = load_tasks()
+    tasks = storage.load_tasks()
 
     # Convert 1-based index to 0-based for list access
     if 0<= index - 1 < len(tasks):
@@ -54,7 +54,7 @@ def mark_done(index: int) -> None:
         # Only update if task is not already completed
         if not task["done"]:
             task["done"] = True
-            save_tasks(tasks)
+            storage.save_tasks(tasks)
             print(f"Marked as done: {task['description']}")
         else:
             print("Task is already completed.")

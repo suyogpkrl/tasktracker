@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: task-tracker
+Version: 0.1.0
+Summary: A simple task tracking application
+Author-email: Suyog <pokhrels477@gmail.com>
+License: MIT
+Keywords: tasks,todo,tracker
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: flake8; extra == "dev"

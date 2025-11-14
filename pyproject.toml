@@ -5,26 +5,34 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "task-tracker"
 version = "0.1.0"
-description = "Simple CLI task tracker"
+description = "A simple task tracking application"
 readme = "README.md"
-requires-python = ">=3.9"
-authors = [
-  { name = "Suyog Pokhrel", email = "pokhrels477@gmail.com" },
-]
+requires-python = ">=3.10"
 license = { text = "MIT" }
+authors = [
+  { name = "Suyog", email = "pokhrels477@gmail.com" },
+]
+keywords = ["tasks", "todo", "tracker"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
+
 dependencies = []
 
 [project.scripts]
-tracker = "tasktracker.main:main"
+tracker = "tasktracker.cli:main"
 
-[tool.setuptools]
-license-files = ["LICENSE"]
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "black",
+  "isort",
+  "mypy",
+  "flake8",
+]
 
 [tool.setuptools.packages.find]
-where = ["code"]
+where = [""]
 include = ["tasktracker*"]
